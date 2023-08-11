@@ -7,20 +7,21 @@ namespace Biblioteca.Controllers
 {
     public class LibroController : Controller
     {
-        LibroDatos _libros = new LibroDatos();
+        LibroDatos _contactoLibros = new LibroDatos();
+
 
         [HttpGet]
-        public IActionResult añadir()
+        public IActionResult AñadirLi()
         {
             return View();
         }
-       [HttpPost]
-       public IActionResult añadir(LibroDatos model)
+        [HttpPost]
+        public IActionResult AñadirLi(LibroModel model)
         {
-            var respuesta = _libros.AñadirLibro(model);
+            var respuesta = _contactoLibros.AñadirLibro(model);
             if (respuesta)
             {
-                return RedirectToAction("añadir");
+                return RedirectToAction("añadirLi");
             }
             else
             {
