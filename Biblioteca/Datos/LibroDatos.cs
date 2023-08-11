@@ -96,7 +96,7 @@ namespace libros.Datos
              return respuesta;
          }
          /*consulta de libros*/
-        public List<LibroModel> consulta()
+        public List<LibroModel> consultaLi()
          {
              var oConsulta = new List<LibroModel>();
 
