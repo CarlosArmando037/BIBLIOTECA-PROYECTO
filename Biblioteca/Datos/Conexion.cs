@@ -9,7 +9,7 @@ namespace Biblioteca.Datos
         public Conexion()
         {
             var builder = new ConfigurationBuilder().SetBasePath(
-                Directory.GetCurrentDirectory()).AddJsonFile("appsettinga.json").Build();
+                Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
             cadenaSql = builder.GetSection("connectionStrings:cadenaSql").Value;
 
         }

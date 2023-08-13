@@ -1,19 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using libros.Datos;
 using CLibro.Models;
+using System.Reflection;
 
 
 namespace Biblioteca.Controllers
 {
     public class LibroController : Controller
     {
-        LibroDatos _contactoLibros = new LibroDatos();
+        LibroDatos _Libros = new LibroDatos();
 
-        public IActionResult consultaLi()
+        [HttpGet]
+        public IActionResult ObtenerLi()
         {
-            var lista = _contactoLibros.consultaLi();
+            return View();
+        }
+        [HttpPost]
+        public IActionResult obtenerLi()
+        {
+            var lista = _Libros.obtenerLi(LibroModel model);
             return View(lista);
         }
+       
 
         
 
@@ -25,7 +33,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult ModificarLi(LibroModel model)
         {
-            var respuesta=_contactoLibros.editarLibros(model);
+            var respuesta= _Libros.editarLibros(model);
             if (respuesta)
             {
                 return RedirectToAction("ModificarLi");
@@ -46,7 +54,7 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult AñadirLi(LibroModel model)
         {
-            var respuesta = _contactoLibros.AñadirLibro(model);
+            var respuesta = _Libros.AñadirLibro(model);
             if (respuesta)
             {
                 return RedirectToAction("añadirLi");

@@ -95,10 +95,25 @@ namespace libros.Datos
              }
              return respuesta;
          }
-         /*consulta de libros*/
-        public List<LibroModel> consultaLi()
+
+        /*
+                     oConsulta.Add(new LibroModel()
+                     {
+                         IdLibro = Convert.ToInt32(dr["IdLibro"]),
+                         Autor = dr["Autor"].ToString(),
+                         Nombre = dr["nombre"].ToString(),
+                         Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                         ISBN = dr["ISBN"].ToString(),
+                         F_Compra = (DateTime)dr["F_compra"],
+                         F_Adquisicion = (DateTime)dr["F_adquisicion"]
+
+                     });
+                    */
+
+        /*Obtener libros especificos*/
+        public LibroModel obtenerLi(int IdLibro)
          {
-             var oConsulta = new List<LibroModel>();
+             var oConsulta = new LibroModel();
 
              var cn = new Conexion();
 
@@ -109,30 +124,27 @@ namespace libros.Datos
 
                  SqlCommand cmd = new SqlCommand("sp_consultaLibro", conexion);
 
+                 cmd.Parameters.AddWithValue("IdLibro", IdLibro);
                  cmd.CommandType = CommandType.StoredProcedure;
 
                  using (var dr = cmd.ExecuteReader())
                  {
                      while (dr.Read())
                      {
-                         oConsulta.Add(new LibroModel()
-                         {
-                             IdLibro = Convert.ToInt32(dr["IdLibro"]),
-                             Autor = dr["Autor"].ToString(),
-                             Nombre = dr["nombre"].ToString(),
-                             Cantidad = Convert.ToInt32(dr["Cantidad"]),
-                             ISBN = dr["ISBN"].ToString(),
-                             F_Compra = (DateTime)dr["F_compra"],
-                             F_Adquisicion = (DateTime)dr["F_adquisicion"]
-
-                         });
+                        oConsulta.IdLibro = Convert.ToInt32(dr["id"]);
+                        oConsulta.Nombre = dr["Nombre"].ToString();
+                        oConsulta.Autor = dr["Autor"].ToString();
+                        oConsulta.Cantidad = Convert.ToInt32(dr["Cantidad"]);
+                        oConsulta.ISBN = dr["ISBN"].ToString();
+                        oConsulta.F_Compra = (DateTime)dr["F_Compra"];
+                        oConsulta.F_Adquisicion = (DateTime)dr["F_Adquisicion"];
                      }
                  }
 
              }
              return oConsulta;
 
-         }
+        }
 
 
      
