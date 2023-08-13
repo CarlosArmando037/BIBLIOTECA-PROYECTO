@@ -19,8 +19,8 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public IActionResult Añadir(UsuarioModel model)
         {
-            var respuesta = _contactoDatos.AñadirUsuario(model);
-            if (respuesta)
+            var AñadirUser = _contactoDatos.AñadirUsuario(model);
+            if (AñadirUser)
             {
                 return RedirectToAction("añadir");
             }
