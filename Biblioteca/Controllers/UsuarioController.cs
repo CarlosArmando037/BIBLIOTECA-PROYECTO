@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using CRUDusuario.Models;
 using usuarios.Datos;
+using CRUDusuario.Models;
+
 
 namespace Biblioteca.Controllers
-{
+{/*
     public class UsuarioController : Controller
     {
         //el "ContactoDatos" es el nombre del la clase de el archivo "ContactodDatos.cs"
@@ -30,4 +31,5 @@ namespace Biblioteca.Controllers
             }
         }
     }
+*/
 }

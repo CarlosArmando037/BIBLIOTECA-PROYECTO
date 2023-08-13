@@ -1,11 +1,12 @@
-﻿@model CRUDusuario.Models.UsuarioModel
-
+﻿@model Libro.Models.LibroModel;
 @{
     ViewData["Title"] = "Consultar";
     Layout = null;
 }
 
 <!DOCTYPE html>
+
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -17,7 +18,7 @@
     <div id="container">
         <h1>Consulta de Libros</h1>
 
-        <form id="search-form">
+        <form asp-action="ObtenerLi" asp-controller="LibrosCrud" id="search-form">
             <label for="title">Buscar por Título:</label>
             <input type="text" id="title" placeholder="Título">
             <button type="button" id="search-button">Buscar</button>
@@ -41,7 +42,7 @@
         </table>
         <br>
         <div id="botones">
-            <input type="button" id="crud" value="Agregar" />
+            <input asp-action="AnadirLi"type="button" id="crud" value="Agregar" />
             <br>
             <input type="button" id="crud" value="Modificar" />
             <br>

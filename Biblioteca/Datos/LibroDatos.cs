@@ -1,4 +1,4 @@
-﻿using CLibro.Models;
+﻿using Libro.Models;
 using System.Data.SqlClient;
 using System.Data;
 using Biblioteca.Datos;
@@ -127,17 +127,17 @@ namespace libros.Datos
                  cmd.Parameters.AddWithValue("IdLibro", IdLibro);
                  cmd.CommandType = CommandType.StoredProcedure;
 
-                 using (var dr = cmd.ExecuteReader())
+                 using (var fc = cmd.ExecuteReader())
                  {
-                     while (dr.Read())
+                     while (fc.Read())
                      {
-                        oConsulta.IdLibro = Convert.ToInt32(dr["id"]);
-                        oConsulta.Nombre = dr["Nombre"].ToString();
-                        oConsulta.Autor = dr["Autor"].ToString();
-                        oConsulta.Cantidad = Convert.ToInt32(dr["Cantidad"]);
-                        oConsulta.ISBN = dr["ISBN"].ToString();
-                        oConsulta.F_Compra = (DateTime)dr["F_Compra"];
-                        oConsulta.F_Adquisicion = (DateTime)dr["F_Adquisicion"];
+                        oConsulta.IdLibro = Convert.ToInt32(fc["id"]);
+                        oConsulta.Nombre = fc["Nombre"].ToString();
+                        oConsulta.Autor = fc["Autor"].ToString();
+                        oConsulta.Cantidad = Convert.ToInt32(fc["Cantidad"]);
+                        oConsulta.ISBN = fc["ISBN"].ToString();
+                        oConsulta.F_Compra = (DateTime)fc["F_Compra"];
+                        oConsulta.F_Adquisicion = (DateTime)fc["F_Adquisicion"];
                      }
                  }
 

@@ -1,14 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using libros.Datos;
-using CLibro.Models;
-
-
+using Libro.Models;
 
 namespace Libro.Controllers
 {
-    public class LibroController : Controller
+    public class LibrosCrudController : Controller
     {
         LibroDatos _Libros = new LibroDatos();
+
+        public IActionResult ObtenerLi(int IdLibro)
+        {
+            var ObLib = _Libros.obtenerLi(IdLibro);
+            return View(ObLib);
+        }
+
 
         /*
         [HttpGet]
@@ -30,22 +35,7 @@ namespace Libro.Controllers
             }
         }
        */
-
-        [HttpGet]
-        public IActionResult ObtenerLi(int id)
-        {
-            var Obtlibro = _Libros.obtenerLi(id);
-
-            if (Obtlibro == null)
-            {
-                return NotFound(); // Puedes manejar la situación si no se encuentra el libro
-            }
-
-            return View(Obtlibro);
-        }
-
-
-
+        
         [HttpGet]
         public IActionResult ModificarLi()
         {
@@ -64,7 +54,7 @@ namespace Libro.Controllers
                 return View();
             }
         }
-
+       
 
 
         [HttpGet]
@@ -75,7 +65,11 @@ namespace Libro.Controllers
         [HttpPost]
         public IActionResult AñadirLi(LibroModel model)
         {
-            var GuarLibro = _Libros.AñadirLibro(model);
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            bool GuarLibro = _Libros.AñadirLibro(model);
             if (GuarLibro)
             {
                 return RedirectToAction("añadirLi");
@@ -87,5 +81,6 @@ namespace Libro.Controllers
 
 
         }
+        
     }
 }

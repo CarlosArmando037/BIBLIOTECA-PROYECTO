@@ -4,7 +4,7 @@ using System.Data;
 using Biblioteca.Datos;
 
 namespace usuarios.Datos
-{
+{/*
     public class UsuarioDatos
     {
         /*
@@ -27,7 +27,7 @@ namespace usuarios.Datos
         }
         
 
-        /*modificar usuarios*/
+        /*modificar usuarios
         public bool AñadirUsuario(UsuarioModel model)
         {
             bool respuesta;
@@ -56,7 +56,7 @@ namespace usuarios.Datos
             return respuesta;
         }
 
-        /*eliminar usuarios*/
+        /*eliminar usuarios
         public bool eliminarUsuario(int IdUsuario)
         {
             bool respuesta;
@@ -81,7 +81,7 @@ namespace usuarios.Datos
             return respuesta;
         }
 
-        /*editar usuario*/
+        /*editar usuario
         public bool editarUsuario(UsuarioModel model)
         {
             bool respuesta;
@@ -107,7 +107,11 @@ namespace usuarios.Datos
                 respuesta = false;
             }
             return respuesta;
+            
         }
+        
+        
 
     }
+    */
 }
