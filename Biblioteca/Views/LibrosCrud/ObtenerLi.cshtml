@@ -22,55 +22,51 @@
         <form id="search-form">
             <label for="title">Buscar por Título:</label>
             <input type="search" id="title" />
+            
+            <a asp-action="AñadirLi" asp-controller="LibrosCrud" id="search-button" class="btn btn-warning btn-sm">Añadir</a>
             <button type="submit" id="search-button">Buscar</button>
-        
 
-        <h2>Resultados de la Búsqueda</h2>
-        <table id="book-table">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Autor</th>
-                    <th>Cantidad</th>
-                    <th>ISBN</th>
-                    <th>Fecha Compra</th>
-                    <th>Fecha Adquirido</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach(var item in Model)
-                {
+
+            <h2>Resultados de la Búsqueda</h2>
+            <table id="book-table">
+                <thead>
                     <tr>
-                        <td>@Html.DisplayFor(modelItem=>item.Nombre)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Autor)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.Cantidad)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.ISBN)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.F_Compra)</td>
-                        <td>@Html.DisplayFor(modelItem=>item.F_Adquisicion)</td>
-                        
-                        <td>
-                            <a asp-action="ModificarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-warning btn-sm">Modificar</a>
-                            <a asp-action="EliminarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-danger btn-sm">Eliminar</a>
-
-                        </td>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Cantidad</th>
+                        <th>ISBN</th>
+                        <th>Fecha Compra</th>
+                        <th>Fecha Adquirido</th>
                     </tr>
-                }
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem=>item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem=>item.Autor)</td>
+                            <td>@Html.DisplayFor(modelItem=>item.Cantidad)</td>
+                            <td>@Html.DisplayFor(modelItem=>item.ISBN)</td>
+                            <td>@Html.DisplayFor(modelItem=>item.Fecha_de_Compra)</td>
+                            <td>@Html.DisplayFor(modelItem=>item.Fecha_de_Adquisicion)</td>
+                        
+                            <td>
+                                <a asp-action="ModificarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-warning btn-sm">Modificar</a>
+                                <a asp-action="EliminarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-danger btn-sm">Eliminar</a>
+
+                            </td>
+                        </tr>
+                    }
                
-            </tbody>
-        </table>
-        <br>
-        <div id="botones">
-            <input type="button" id="crud" value="Agregar" />
-            <a asp-action="AñadirLi" asp-controller="LibrosCrud">añadir Libros</a>
-            <br>
-            <input type="button" id="crud" value="Modificar" />
-            <a asp-action="ModificarLi" asp-controller="Libro">modificar</a>
-            <br>
-            <input  type="button" id="crud" value="Eliminar" />
-            <a asp-action="" asp-controller="Libro">eliminar</a>
-            <br>
-            </div>
+                </tbody>
+            </table>
+
         </form>
+        <div>
+            <a asp-action="Menu" asp-controller="LibrosCrud" class="btn btn-warning btn-sm">volver</a>
+
+        </div>
+
     </div>
 </body>
 </html>

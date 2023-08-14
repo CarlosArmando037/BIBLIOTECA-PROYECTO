@@ -20,7 +20,7 @@
         <h1>Gestión de Libros</h1>
 
         <h2>Añadir/Modificar Libro</h2>
-        <form asp-Action="ModificarLi" asp-controller="LibrosCrud" id="book-form">
+        <form asp-Action="ModificarLi" asp-controller="LibrosCrud" id="book-form" method="post">
             <label for="title">Título:</label>
             <input asp-for="Nombre" type="text" id="title" placeholder="Título" required>
             <span asp-validation-for="Nombre" class="text-danger"></span>
@@ -38,9 +38,11 @@
             <span asp-validation-for="ISBN" class="text-danger"></span>
             
             <label for="fcompra">Fecha de compra:</label>
-            <input asp-for="F_Compra" type="date" id="fcompra" placeholder="Fecha de Compra" required>
+            <input asp-for="Fecha_de_Compra" type="date" id="fcompra" placeholder="Fecha de Compra" required>
+
             <label for="fadquisicion">fecha de adquisicion:</label>
-            <input asp-for="F_Adquisicion" type="date" id="fadquisicion" placeholder="Fecha de Adquisicion" required>
+            <input asp-for="Fecha_de_Adquisicion" type="date" id="fadquisicion" placeholder="Fecha de Adquisicion" required>
+            
             <button type="submit" id="save-button">Guardar</button>
             <br>
             <a asp-action="ObtenerLi" asp-controller="LibrosCrud" id="cancel-button">Cancelar</a>

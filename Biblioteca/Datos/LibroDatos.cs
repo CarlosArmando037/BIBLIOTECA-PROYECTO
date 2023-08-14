@@ -22,8 +22,8 @@ namespace libros.Datos
                     cmd.Parameters.AddWithValue("Nombre", model.Nombre);
                     cmd.Parameters.AddWithValue("Cantidad", model.Cantidad);
                     cmd.Parameters.AddWithValue("ISBN", model.ISBN);
-                    cmd.Parameters.AddWithValue("Fecha_de_Compra", model.F_Compra);
-                    cmd.Parameters.AddWithValue("Fecha_de_Adquisicion", model.F_Adquisicion);
+                    cmd.Parameters.AddWithValue("F_Compra", model.Fecha_de_Compra);
+                    cmd.Parameters.AddWithValue("F_Adquisicion", model.Fecha_de_Adquisicion);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }
@@ -74,14 +74,14 @@ namespace libros.Datos
                  using (var conexion = new SqlConnection(cn.getCadenaSql()))
                  {
                      conexion.Open();
-                     SqlCommand cmd = new SqlCommand("sp_modificarLibros", conexion);
-                     cmd.Parameters.AddWithValue("IdUsuario", model.IdLibro);
+                     SqlCommand cmd = new SqlCommand("sp_modificarLibro", conexion);
+                     cmd.Parameters.AddWithValue("IdLibro", model.IdLibro);
                      cmd.Parameters.AddWithValue("Autor", model.Autor);
                      cmd.Parameters.AddWithValue("Nombre", model.Nombre);
                      cmd.Parameters.AddWithValue("Cantidad", model.Cantidad);
                      cmd.Parameters.AddWithValue("ISBN", model.ISBN);
-                     cmd.Parameters.AddWithValue("Fecha_de_Compra", model.F_Compra);
-                     cmd.Parameters.AddWithValue("Fecha_de_Adquisicion", model.F_Adquisicion);
+                     cmd.Parameters.AddWithValue("F_Compra", model.Fecha_de_Compra);
+                     cmd.Parameters.AddWithValue("F_Adquisicion", model.Fecha_de_Adquisicion);
 
                      cmd.CommandType = CommandType.StoredProcedure;
                      cmd.ExecuteNonQuery();
@@ -98,7 +98,7 @@ namespace libros.Datos
 
         /*listado de libros*/
 
-        public List<LibroModel> Lista()
+        public List<LibroModel> ListaLi()
         {
             var oLista= new List<LibroModel>();
             var cn = new Conexion();
@@ -116,11 +116,11 @@ namespace libros.Datos
                         {
                             IdLibro = Convert.ToInt32(dr["IdLibro"]),
                             Autor = dr["Autor"].ToString(),
-                            Nombre = dr["nombre"].ToString(),
+                            Nombre = dr["Nombre"].ToString(),
                             Cantidad = Convert.ToInt32(dr["Cantidad"]),
                             ISBN = dr["ISBN"].ToString(),
-                            F_Compra = (DateTime)dr["Fecha_de_Compra"],
-                            F_Adquisicion = (DateTime)dr["Fecha_de_Adquisicion"]
+                            Fecha_de_Compra = (DateTime)dr["Fecha_de_Compra"],
+                            Fecha_de_Adquisicion = (DateTime)dr["Fecha_de_Adquisicion"]
 
                         });
                     }
@@ -152,8 +152,8 @@ namespace libros.Datos
                         oConsulta.Autor = fc["Autor"].ToString();
                         oConsulta.Cantidad = Convert.ToInt32(fc["Cantidad"]);
                         oConsulta.ISBN = fc["ISBN"].ToString();
-                        oConsulta.F_Compra = (DateTime)fc["Fecha_de_Compra"];
-                        oConsulta.F_Adquisicion = (DateTime)fc["Fecha_de_Adquisicion"];
+                        oConsulta.Fecha_de_Compra = (DateTime)fc["Fecha_de_Compra"];
+                        oConsulta.Fecha_de_Adquisicion = (DateTime)fc["Fecha_de_Adquisicion"];
                      }
                  }
 

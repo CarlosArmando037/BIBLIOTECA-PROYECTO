@@ -14,8 +14,8 @@ namespace CrudLibro.Models
         [Required(ErrorMessage = "Cantidad es Obligatorio")]
         public string ISBN { get; set; }
         [Required(ErrorMessage = "ISBN es Obligatorio")]
-        public DateTime F_Compra{ get; set; }
-        public DateTime F_Adquisicion { get; set; }
+        public DateTime Fecha_de_Compra{ get; set; }
+        public DateTime Fecha_de_Adquisicion { get; set; }
 
     }
 }

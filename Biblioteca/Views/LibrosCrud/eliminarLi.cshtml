@@ -1,5 +1,5 @@
 ﻿
-@model LibroModel;
+@model CrudLibro.Models.LibroModel;
 @{
     ViewData["Title"] = "eliminarLi";
     Layout = "~/Views/Shared/_layout.cshtml";
@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-4 mb-3">
                 <button type="submit" class="btn btn-danger mb-3 btn-sm">Eliminar</button><br />
-                <a asp-action="Lista" asp-controller="LibrosCrud" class="btn btn-warning btn-sm">volver</a>
+                <a asp-action="ObtenerLi" asp-controller="LibrosCrud" class="btn btn-warning btn-sm">volver</a>
             </div>
         </form>
     </div>

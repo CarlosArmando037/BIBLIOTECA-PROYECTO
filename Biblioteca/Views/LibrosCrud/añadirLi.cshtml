@@ -1,4 +1,4 @@
-﻿@model Libro.Models.LibroModel;
+﻿@model CrudLibro.Models.LibroModel;
 @{
     ViewData["Title"] = "Consultar";
     Layout = "~/Views/Shared/_layout.cshtml";
@@ -40,16 +40,19 @@
             </div>
             <div class="mb-3">
                 <label for="fcompra" class="form-label">Fecha de Compra:</label>
-                <input asp-for="F_Compra" type="date" class="form-control" id="fcompra">
+                <input asp-for="Fecha_de_Compra" type="date" class="form-control" id="fcompra">
             </div>
             <div class="mb-3">
                 <label for="fadquisicion" class="form-label">Fecha de Adquisicion:</label>
-                <input asp-for="F_Adquisicion" type="date" class="form-control" id="fadquisicion">
+                <input asp-for="Fecha_de_Adquisicion" type="date" class="form-control" id="fadquisicion">
             </div>
             
             <button type="submit" class="btn btn-primary">enviar</button>
-            <a asp-action="Lista" asp-controller="LibrosCrud" class="btn btn-warning btn-sm">volver</a>
+            
         </form>
+        <div>
+            <a asp-action="ObtenerLi" asp-controller="LibrosCrud" class="btn btn-warning btn-sm">volver</a>
+        </div>
     </div>
 
 </body>
