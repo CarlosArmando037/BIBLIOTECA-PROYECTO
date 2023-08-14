@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using libros.Datos;
-using Libro.Models;
+using CrudLibro.Models;
 
 namespace Libro.Controllers
 {

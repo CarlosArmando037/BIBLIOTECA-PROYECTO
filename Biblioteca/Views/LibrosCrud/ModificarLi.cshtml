@@ -1,4 +1,5 @@
-﻿@model Libro.Models.LibroModel;
+﻿
+@model CrudLibro.Models.LibroModel;
 @{
     ViewData["Title"] = "ModificarLi";
     Layout = "~/Views/Shared/_layout.cshtml";
@@ -12,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/styleañadir.css">
+
 </head>
 <body>
     <div id="container">
@@ -23,15 +24,19 @@
             <label for="title">Título:</label>
             <input asp-for="Nombre" type="text" id="title" placeholder="Título" required>
             <span asp-validation-for="Nombre" class="text-danger"></span>
+            
             <label for="author">Autor:</label>
             <input asp-for="Autor" type="text" id="author" placeholder="Autor" required>
             <span asp-validation-for="Autor" class="text-danger"></span>
+            
             <label for="Cantidad">Cantidad:</label>
             <input asp-for="Cantidad" type="number" id="title" placeholder="Cantidad" required>
             <span asp-validation-for="Cantidad" class="text-danger"></span>
+            
             <label for="isbn">ISBN:</label>
             <input asp-for="ISBN" type="text" id="isbn" placeholder="ISBN" required>
             <span asp-validation-for="ISBN" class="text-danger"></span>
+            
             <label for="fcompra">Fecha de compra:</label>
             <input asp-for="F_Compra" type="date" id="fcompra" placeholder="Fecha de Compra" required>
             <label for="fadquisicion">fecha de adquisicion:</label>

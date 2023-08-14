@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Libro.Models
+namespace CrudLibro.Models
 {
     public class LibroModel
     {
