@@ -7,6 +7,39 @@ namespace Presatamo_Datos
 {
     public class Prestamo_Datos
     {
+
+        /*prestamo listar*/
+        public List<PrestamoModel> ListaPrestamo()
+        {
+            var oLista = new List<PrestamoModel>();
+            var cn = new Conexion();
+
+            using (var conexion = new SqlConnection(cn.getCadenaSql()))
+            {
+                conexion.Open();
+                SqlCommand cmd = new SqlCommand("sp_listarprestamo", conexion);
+                cmd.CommandType = CommandType.StoredProcedure;
+                using (var dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        oLista.Add(new PrestamoModel()
+                        {
+                             idPrestamo= Convert.ToInt32(dr["IdPrestamo"]),
+                            Titulo = dr["Titulo"].ToString(),
+                            IdUsuario = Convert.ToInt32(dr["IdPrestamo"]),
+                            Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                            Fecha_de_Prestamo = (DateTime)dr["Fecha_de_Prestamo"],
+                            Fecha_de_Entrega = (DateTime)dr["Fecha_de_Adquisicion"],
+                            Estatus = Convert.ToChar(dr["Estatus"])
+
+                        });
+                    }
+                }
+            }
+            return oLista;
+        }
+
         /*GUARDAR LIBRO*/
         public bool Prestamo_Guardar(PrestamoModel model)
         {
@@ -18,8 +51,12 @@ namespace Presatamo_Datos
                 {
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("sp_Guardar", conexion);
-                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.Fecha_de_pedido);
-                    cmd.Parameters.AddWithValue("Fecha de Entrega", model.Fecha_de_entrega);
+                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.idPrestamo);
+                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.Titulo);
+                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.IdUsuario);
+                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.Cantidad);
+                    cmd.Parameters.AddWithValue("Fecha de Pedido", model.Fecha_de_Prestamo);
+                    cmd.Parameters.AddWithValue("Fecha de Entrega", model.Fecha_de_Entrega);
                     cmd.Parameters.AddWithValue("Estatus", model.Estatus);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
@@ -37,7 +74,7 @@ namespace Presatamo_Datos
 
         /*ACTUALIZAR LIBRO*/
 
-        public bool Presatamo_Actualizar(PrestamoModel model)
+        public bool ModificarPresatamo(PrestamoModel model)
         {
             bool respuesta;
             try
@@ -48,8 +85,8 @@ namespace Presatamo_Datos
                     conexion.Open();
                     SqlCommand cmd = new SqlCommand("sp_Actualizar", conexion);
                     cmd.Parameters.AddWithValue("ID Prestamo", model.idPrestamo);
-                    cmd.Parameters.AddWithValue("Fecha de pedido", model.Fecha_de_pedido);
-                    cmd.Parameters.AddWithValue("Fecha de entrega", model.Fecha_de_entrega);
+                    cmd.Parameters.AddWithValue("Fecha de pedido", model.Fecha_de_Prestamo);
+                    cmd.Parameters.AddWithValue("Fecha de entrega", model.Fecha_de_Entrega);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.ExecuteNonQuery();
                 }

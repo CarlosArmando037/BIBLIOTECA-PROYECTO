@@ -8,19 +8,16 @@ namespace Libro.Controllers
     {
         LibroDatos _Libros = new LibroDatos();
 
-        public IActionResult consultarLi()
-        {
-
-            var Obte = _Libros.ListaLi();
-            return View(Obte);
-        }
 
         public IActionResult ObtenerLi()
         {
            
             var Obte = _Libros.ListaLi();
             return View(Obte);
+
         }
+
+
 
         public IActionResult Index()
         {

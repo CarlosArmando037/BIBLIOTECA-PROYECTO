@@ -1,24 +1,29 @@
-﻿using CrudLibro.Models;
-using Microsoft.AspNetCore.Http;
+﻿using Prestamo.Models;
 using Microsoft.AspNetCore.Mvc;
+using Presatamo_Datos;
 
 namespace Biblioteca.Controllers
 {
     public class PrestamoController : Controller
     {
-        // GET: PrestamoController
-        public IActionResult ObtenerLi()
-        {
 
-            var Obte = _Libros.ListaLi();
-            return View(Obte);
+        Prestamo_Datos _prestamo = new Prestamo_Datos();
+
+
+        // GET: PrestamoController
+        public IActionResult ObtenerPrestamo()
+        {
+            
+                var Obte = _prestamo.ListaPrestamo();
+                return View(Obte);
+            
 
         }
 
         /*ELIMINAR PRESTAMO-------------------------------------------------------------------------------------*/
         public IActionResult EliminarLi(PrestamoModel model)
         {
-            var elim = _Libros.eliminarLibro(model.IdLibro);
+            var elim = _prestamo.Prestamo_Eliminar(model);
             if (elim)
             {
                 return RedirectToAction("ObtenerLi");
@@ -36,13 +41,13 @@ namespace Biblioteca.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult AñadirLi(LibroModel model)
+        public IActionResult AñadirLi(PrestamoModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            bool GuarLibro = _Libros.AñadirLibro(model);
+            bool GuarLibro = _prestamo.Prestamo_Guardar(model);
             if (GuarLibro)
             {
                 return RedirectToAction("añadirLi");
