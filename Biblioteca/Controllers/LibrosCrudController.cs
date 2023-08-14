@@ -8,14 +8,36 @@ namespace Libro.Controllers
     {
         LibroDatos _Libros = new LibroDatos();
 
-        public IActionResult ObtenerLi(int IdLibro)
+        public IActionResult ObtenerLi()
         {
-            var ObLib = _Libros.obtenerLi(IdLibro);
-            return View(ObLib);
+           
+            var Obte = _Libros.Lista();
+            return View(Obte);
+        }
+        /*
+        [HttpPost]
+        public IActionResult ObtenerLi(LibroModel model)
+        {
+            var  obtener = _Libros.obtenerLi();
+            if (obtener != null)
+            {
+                return RedirectToAction("ObtenerLi");
+            }
+            else
+            {
+                return View();
+            }
         }
 
+        
+        public IActionResult ObtenerLi(int IdLibro)
+        {
+            LibroModel lista = _Libros.obtenerLi();
+            return View(lista);
+        }
+        
 
-        /*
+        
         [HttpGet]
         public IActionResult ObtenerLi()
         {
@@ -35,28 +57,51 @@ namespace Libro.Controllers
             }
         }
        */
-        
-        [HttpGet]
-        public IActionResult ModificarLi()
+        /*MODIFICAR LIBROS-------------------------------------------------------*/
+
+        public IActionResult ModificarLi(int IdLibro)
         {
-            return View();
+            LibroModel _libros = _Libros.obtenerLi(IdLibro);
+            return View(_libros);
         }
         [HttpPost]
         public IActionResult ModificarLi(LibroModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
             var EditLibros = _Libros.editarLibros(model);
             if (EditLibros)
             {
-                return RedirectToAction("ModificarLi");
+                return RedirectToAction("ObtenerLi");
             }
             else
             {
                 return View();
             }
         }
-       
+       /*ELIMINAR LIBROS--------------------------------------------------------*/
+        public IActionResult EliminarLi(int IdLibro)
+        {
+            LibroModel _libros = _Libros.obtenerLi(IdLibro);
+            return View(_libros);
+        }
+        [HttpPost]
+        public IActionResult EliminarLi(LibroModel model)
+        {
+            var elim = _Libros.eliminarLibro(model.IdLibro);
+            if (elim)
+            {
+                return RedirectToAction("ObtenerLi");
+            }
+            else
+            {
+                return View();
+            }
+        }
 
-
+        /*AÑADIR LIBROS-----------------------------------------------------*/
         [HttpGet]
         public IActionResult AñadirLi()
         {

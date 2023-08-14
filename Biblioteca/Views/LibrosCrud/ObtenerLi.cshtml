@@ -1,7 +1,8 @@
-﻿@model Libro.Models.LibroModel;
+﻿@model List<Libro.Models.LibroModel>;
 @{
     ViewData["Title"] = "Consultar";
-    Layout = null;
+    Layout = "~/Views/Shared/_layout.cshtml";
+
 }
 
 <!DOCTYPE html>
@@ -17,12 +18,12 @@
 <body>
     <div id="container">
         <h1>Consulta de Libros</h1>
-
-        <form asp-action="ObtenerLi" asp-controller="LibrosCrud" id="search-form">
+        
+        <form id="search-form">
             <label for="title">Buscar por Título:</label>
-            <input type="text" id="title" placeholder="Título">
-            <button type="button" id="search-button">Buscar</button>
-        </form>
+            <input type="search" id="title" />
+            <button type="submit" id="search-button">Buscar</button>
+        
 
         <h2>Resultados de la Búsqueda</h2>
         <table id="book-table">
@@ -37,18 +38,39 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Los resultados de la búsqueda se agregarán dinámicamente aquí -->
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem=>item.Nombre)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Autor)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.Cantidad)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.ISBN)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.F_Compra)</td>
+                        <td>@Html.DisplayFor(modelItem=>item.F_Adquisicion)</td>
+                        
+                        <td>
+                            <a asp-action="ModificarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-warning btn-sm">Modificar</a>
+                            <a asp-action="EliminarLi" asp-controller="LibrosCrud" asp-route-IdLibro="@item.IdLibro" class="btn btn-danger btn-sm">Eliminar</a>
+
+                        </td>
+                    </tr>
+                }
+               
             </tbody>
         </table>
         <br>
         <div id="botones">
-            <input asp-action="AnadirLi"type="button" id="crud" value="Agregar" />
+            <input type="button" id="crud" value="Agregar" />
+            <a asp-action="AñadirLi" asp-controller="LibrosCrud">añadir Libros</a>
             <br>
             <input type="button" id="crud" value="Modificar" />
+            <a asp-action="ModificarLi" asp-controller="Libro">modificar</a>
             <br>
-            <input type="button" id="crud" value="Eliminar" />
+            <input  type="button" id="crud" value="Eliminar" />
+            <a asp-action="" asp-controller="Libro">eliminar</a>
             <br>
-        </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>
