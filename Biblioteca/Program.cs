@@ -18,6 +18,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=LibrosCrud}/{action=ObtenerLi}/{id?}");
+    pattern: "{controller=Prestamo}/{action=ListarPrestamos}/{id?}");
 
 app.Run();

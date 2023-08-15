@@ -11,17 +11,16 @@ namespace Biblioteca.Controllers
 
 
         // GET: PrestamoController
-        public IActionResult ObtenerPrestamo()
+        public IActionResult ListarPrestamos()
         {
             
-                var Obte = _prestamo.ListaPrestamo();
-                return View(Obte);
+                var list = _prestamo.ListaPrestamo();
+                return View(list);
             
-
         }
 
         /*ELIMINAR PRESTAMO-------------------------------------------------------------------------------------*/
-        public IActionResult EliminarLi(PrestamoModel model)
+        public IActionResult EliminarPrestamos(PrestamoModel model)
         {
             var elim = _prestamo.Prestamo_Eliminar(model);
             if (elim)
@@ -36,7 +35,7 @@ namespace Biblioteca.Controllers
 
         /*AÑADIR prestamo-----------------------------------------------------*/
         [HttpGet]
-        public IActionResult AñadirLi()
+        public IActionResult AñadirPrestamos()
         {
             return View();
         }

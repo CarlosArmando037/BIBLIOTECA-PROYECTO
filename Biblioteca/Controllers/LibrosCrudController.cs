@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using libros.Datos;
 using CrudLibro.Models;
+using System.Reflection;
 
 namespace Libro.Controllers
 {
@@ -8,66 +9,36 @@ namespace Libro.Controllers
     {
         LibroDatos _Libros = new LibroDatos();
 
-
-        public IActionResult ObtenerLi()
+        /*------------------------LISTAR LIBRO------------------------------------------------------*/
+        public IActionResult ListarLi()
         {
            
             var Obte = _Libros.ListaLi();
             return View(Obte);
 
         }
+        /*-----------------------CONSULTA LIBRO-------------------------------------------------------*/
+        /* public IActionResult ObtenerLi(int IdLibro)
+         {
+
+             var Obte = _Libros.obtenerLi(IdLibro);
+             return View(Obte);
+             if()
+             {
+
+             }
+
+         }
+        */
 
 
-
-        /*public IActionResult Index()
+        public IActionResult ConsutaLi(int IdLibro)
         {
 
-            var Obte = _Libros.ListaLi();
+            var Obte = _Libros.obtenerLi(IdLibro);
             return View(Obte);
-        }*/
-        /*
-        [HttpPost]
-        public IActionResult ObtenerLi(LibroModel model)
-        {
-            var  obtener = _Libros.obtenerLi();
-            if (obtener != null)
-            {
-                return RedirectToAction("ObtenerLi");
-            }
-            else
-            {
-                return View();
-            }
         }
 
-        
-        public IActionResult ObtenerLi(int IdLibro)
-        {
-            LibroModel lista = _Libros.obtenerLi();
-            return View(lista);
-        }
-        
-
-        
-        [HttpGet]
-        public IActionResult ObtenerLi()
-        {
-            return View();
-        }
-        [HttpPost]
-        public IActionResult obtenerLi(LibroModel model)
-        {
-            var lista = _Libros.obtenerLi(model);
-            if (lista)
-            {
-                return RedirectToAction("ObtenerLi");
-            }
-            else
-            {
-                return View();
-            }
-        }
-       */
         /*MODIFICAR LIBROS-------------------------------------------------------*/
 
         public IActionResult ModificarLi(int IdLibro)
