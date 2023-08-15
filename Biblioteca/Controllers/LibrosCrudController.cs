@@ -19,12 +19,12 @@ namespace Libro.Controllers
 
 
 
-        public IActionResult Index()
+        /*public IActionResult Index()
         {
 
             var Obte = _Libros.ListaLi();
             return View(Obte);
-        }
+        }*/
         /*
         [HttpPost]
         public IActionResult ObtenerLi(LibroModel model)
@@ -76,21 +76,28 @@ namespace Libro.Controllers
             return View(_libros);
         }
         [HttpPost]
+        
         public IActionResult ModificarLi(LibroModel model)
         {
             if (!ModelState.IsValid)
             {
                 return View();
             }
-            var EditLibros = _Libros.editarLibros(model);
-            if (EditLibros)
-            {
-                return RedirectToAction("ObtenerLi");
+            if (model.IdLibro != 0){
+                var EditLibros = _Libros.EditarLibros(model);
+                if (EditLibros)
+                {
+                    return RedirectToAction("ObtenerLi");
+                }
+                else
+                {
+                    return View();
+                }
             }
-            else
-            {
+            else{
                 return View();
             }
+            
         }
        /*ELIMINAR LIBROS--------------------------------------------------------*/
         public IActionResult EliminarLi(int IdLibro)
