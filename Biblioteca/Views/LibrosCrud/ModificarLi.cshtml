@@ -21,6 +21,7 @@
 
         <h2>Añadir/Modificar Libro</h2>
         <form asp-Action="ModificarLi" asp-controller="LibrosCrud" id="book-form" method="post">
+            <input type="hidden" asp-for="IdLibro" />
             <label for="title">Título:</label>
             <input asp-for="Nombre" type="text" id="title" placeholder="Título" required>
             <span asp-validation-for="Nombre" class="text-danger"></span>

@@ -58,7 +58,7 @@ namespace Libro.Controllers
                 var EditLibros = _Libros.EditarLibros(model);
                 if (EditLibros)
                 {
-                    return RedirectToAction("ObtenerLi");
+                    return RedirectToAction("ListarLi");
                 }
                 else
                 {
@@ -82,7 +82,7 @@ namespace Libro.Controllers
             var elim = _Libros.eliminarLibro(model.IdLibro);
             if (elim)
             {
-                return RedirectToAction("ObtenerLi");
+                return RedirectToAction("ListarLi");
             }
             else
             {
@@ -106,7 +106,7 @@ namespace Libro.Controllers
             bool GuarLibro = _Libros.AñadirLibro(model);
             if (GuarLibro)
             {
-                return RedirectToAction("añadirLi");
+                return RedirectToAction("ListarLi");
             }
             else
             {
