@@ -22,6 +22,10 @@ namespace Biblioteca.Controllers
         {
             return View();
         }
+        public IActionResult Pedir()
+        {
+            return View();
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

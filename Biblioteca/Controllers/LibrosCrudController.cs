@@ -17,17 +17,31 @@ namespace Libro.Controllers
             return View(Obte);
 
         }
+        public IActionResult Index()
+        {
+
+            var Obte = _Libros.ListaLi();
+            return View(Obte);
+
+        }
+
+
         /*-----------------------CONSULTA LIBRO-------------------------------------------------------*/
-        /* public IActionResult ObtenerLi(int IdLibro)
+
+        /*
+         public IActionResult ObtenerLi(int IdLibro)
          {
 
              var Obte = _Libros.obtenerLi(IdLibro);
              return View(Obte);
-             if()
+             if(!ModelState.IsValid)
              {
-
+                return View(Obte);
              }
-
+            else
+            {
+                return View();
+            }
          }
         */
 
@@ -38,6 +52,7 @@ namespace Libro.Controllers
             var Obte = _Libros.obtenerLi(IdLibro);
             return View(Obte);
         }
+        
 
         /*MODIFICAR LIBROS-------------------------------------------------------*/
 

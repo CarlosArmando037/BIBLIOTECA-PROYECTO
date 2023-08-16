@@ -1,0 +1,40 @@
+﻿@model List<CrudLibro.Models.LibroModel>
+@{
+    ViewData["Title"] = "Lista";
+    Layout = "~/Views/Shared/_layout.cshtml";
+}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <img src="imagen_del_libro.jpg" class="card-img-top" alt="Portada del Libro">
+                <div class="card-body">
+                    @*
+                    <p class="card-text">Autor: Nombre del Autor</p>
+                    @foreach (var item in Model)
+                    {
+                        <td>@Html.DisplayFor(Modelitem=>item.Nombre)</td>
+                        <td>@Html.DisplayFor(Modelitem=>item.Autor)</td>
+                        <td>@Html.DisplayFor(Modelitem=>item.Cantidad)</td>
+                        <td>@Html.DisplayFor(Modelitem=>item.ISBN)</td>
+                        <td>@Html.DisplayFor(Modelitem=>item.Fecha_de_Compra)</td>
+                        <td>@Html.DisplayFor(Modelitem=>item.Fecha_de_Adquisicion)</td>
+                    }
+                    *@
+
+                    p class="card-text">Disponibles</p>
+                    <p class="card-text">Editorial: Editorial ABC</p>
+
+                    <p class="card-text">Año de Publicación: 20XX</p>
+
+                    <h5 class="card-title">Título del Libro</h5>
+                   
+                    
+                    <a asp-action="" asp-controller="" class="btn btn-primary">Solicitar Préstamo</a>
+                    <a asp-action="Index" asp-controller="LibrosCrud" class="btn btn-warning">volver</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

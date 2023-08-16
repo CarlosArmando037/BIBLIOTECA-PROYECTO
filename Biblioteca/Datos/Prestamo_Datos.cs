@@ -25,13 +25,14 @@ namespace Presatamo_Datos
                     {
                         oLista.Add(new PrestamoModel()
                         {
-                             idPrestamo= Convert.ToInt32(dr["IdPrestamo"]),
+                            idPrestamo= Convert.ToInt32(dr["IdPrestamo"]),
                             Titulo = dr["Titulo"].ToString(),
-                            IdUsuario = Convert.ToInt32(dr["IdPrestamo"]),
+
                             Cantidad = Convert.ToInt32(dr["Cantidad"]),
+                            IdUsuario = Convert.ToInt32(dr["Cantidad"]),
                             Fecha_de_Prestamo = (DateTime)dr["Fecha_de_Prestamo"],
-                            Fecha_de_Entrega = (DateTime)dr["Fecha_de_Adquisicion"],
-                            Estatus = Convert.ToChar(dr["Estatus"])
+                            Fecha_de_Entrega = (DateTime)dr["Fecha_de_Entrega"],
+                            Estatus = Convert.ToChar(dr["Estatus"]),
 
                         });
                     }

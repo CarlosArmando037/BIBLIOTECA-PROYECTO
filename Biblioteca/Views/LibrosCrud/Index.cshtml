@@ -1,5 +1,7 @@
 ﻿@model List<CrudLibro.Models.LibroModel>;
 @{
+    ViewData["Title"] = "Lista";
+    Layout = "~/Views/Shared/_layout.cshtml";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -34,9 +36,9 @@
 
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a asp-action="" asp-controller="" class="btn btn-primary">Detalles</a>
+                                            <a asp-action="Pedir" asp-controller="Home" class="btn btn-primary">Detalles</a>
                                         </div>
-                                        <a asp-action="" asp-controller="" class="btn btn-success">Pedir</a>
+                                        <a  class="btn btn-success">Pedir</a>
 
                                     </div>
                                 </div>
@@ -57,7 +59,7 @@
                                     }
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="javascript:abrir2()" class="btn btn-primary" id="Segunda">Detalles</a>
+                                        <a asp-action="Pedir" asp-controller="Home" class="btn btn-primary" id="Segunda">Detalles</a>
                                         </div>
                                         <a href="javascript:abrir4()" class="btn btn-success">Pedir</a>
                                     </div>
@@ -71,14 +73,14 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@Html.DisplayFor(modelItem=>item.Nombre)</td>
-                                            <td>@Html.DisplayFor(modelItem=>item.Autor)</td>
+                                            <td>@Html.DisplayFor(IdLibro=>item.Nombre)</td>
+                                            <td>@Html.DisplayFor(IdLibro=>item.Autor)</td>
                                             <td>@Html.DisplayFor(modelItem=>item.Cantidad)</td>
                                         </tr>
                                     }
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <a href="javascript:abrir2()" class="btn btn-primary" id="Segunda">Detalles</a>
+                                        <a asp-action="Pedir" asp-controller="Home" class="btn btn-primary" id="Segunda">Detalles</a>
                                         </div>
                                         <a href="javascript:abrir4()" class="btn btn-success">Pedir</a>
                                     </div>
