@@ -73,8 +73,9 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@Html.DisplayFor(IdLibro=>item.Nombre)</td>
-                                            <td>@Html.DisplayFor(IdLibro=>item.Autor)</td>
+                                            <td>@Html.Dis</td>
+                                            <td>@Html.DisplayFor(modelItem=>item.Nombre)</td>
+                                            <td>@Html.DisplayFor(modelItem=>item.Autor)</td>
                                             <td>@Html.DisplayFor(modelItem=>item.Cantidad)</td>
                                         </tr>
                                     }
