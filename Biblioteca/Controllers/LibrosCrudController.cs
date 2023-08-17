@@ -46,7 +46,7 @@ namespace Libro.Controllers
         */
 
 
-        public IActionResult ConsutaLi(int IdLibro)
+        public IActionResult ConsultaLi(int IdLibro)
         {
 
             var Obte = _Libros.obtenerLi(IdLibro);

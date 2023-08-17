@@ -1,0 +1,19 @@
+﻿@model CrudLibro.Models.LibroModel;
+@{
+}
+<div class="container mt-5">
+    <h2>Buscar Libros</h2>
+    <form>
+        <div class="input-group mb-3">
+            <input asp-for="Nombre" type="text" class="form-control" placeholder="Ingrese título o autor del libro" aria-label="Buscar Libros" aria-describedby="buscar-btn">
+            <button class="btn btn-primary" type="submit" id="buscar-btn">Buscar</button>
+            <input type="hidden" asp-for="Nombre" />
+
+            <div>
+
+
+            </div>
+
+        </div>
+    </form>
+</div>
