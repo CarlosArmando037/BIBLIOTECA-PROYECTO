@@ -1,5 +1,5 @@
 ﻿
-namespace CRUDusuario.Models
+namespace Biblioteca.Models
 {
     public class UsuarioModel
     {
