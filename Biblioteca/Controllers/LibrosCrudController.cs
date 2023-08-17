@@ -54,7 +54,7 @@ namespace Libro.Controllers
         }
         
 
-        /*MODIFICAR LIBROS-------------------------------------------------------*/
+        /*MODIFICAR LIBROS---------------------hjv----------------------------------*/
 
         public IActionResult ModificarLi(int IdLibro)
         {
