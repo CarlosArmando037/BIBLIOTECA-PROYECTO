@@ -7,7 +7,7 @@ namespace libros.Datos
 {
     public class LibroDatos
     {
-        /*listado de libros*/
+        /*listado de Libros*/
 
         public List<LibroModel> ListaLi()
         {
