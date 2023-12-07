@@ -2,7 +2,7 @@
 using usuarios.Datos;
 using CRUDusuario.Models;
 
-
+//hola carlos
 namespace Biblioteca.Controllers
 {/*
     public class UsuarioController : Controller
